@@ -8,8 +8,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-pretrained/
-training_data/
 build/
 develop-eggs/
 dist/
@@ -127,13 +125,3 @@ Thumbs.db
 # Project specific
 uploads/
 logs/
-books/
-past_papers/
-backups/
-FYP_JSON_DATASET/
-Extracted text books/
-tmp_out.txt
-tmp_err.txt
-*.pdf
-*.npy
-app/.env
