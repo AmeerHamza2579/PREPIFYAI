@@ -1,0 +1,11 @@
+books/
+past_papers/
+backups/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pdf
+*.npy
+
+app/.env
