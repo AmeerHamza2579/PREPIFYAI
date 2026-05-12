@@ -102,7 +102,8 @@ python -m pytest tests/ --cov=app --cov-report=html
 
 ## Deployment
 
-- AWS Free Tier backend deployment guide: `AWS_FREE_TIER_DEPLOYMENT_GUIDE.md`
+- **Beginner's click-by-click manual** (start here if this is your first deployment): `BEGINNERS_DEPLOYMENT_MANUAL.md`
+- AWS Free Tier architecture overview and service guide: `AWS_FREE_TIER_DEPLOYMENT_GUIDE.md`
 - Production environment template: `app/.env.production.example`
 
 ## Key Endpoints
