@@ -208,6 +208,7 @@ Create service file `/etc/systemd/system/prepifyai-api.service`:
 ```ini
 [Unit]
 Description=PrepifyAI FastAPI Backend
+Requires=docker.service
 After=network.target docker.service
 
 [Service]
@@ -215,6 +216,7 @@ User=ubuntu
 Group=ubuntu
 WorkingDirectory=/home/ubuntu/PREPIFYAI
 EnvironmentFile=/home/ubuntu/PREPIFYAI/app/.env
+ExecStartPre=/usr/bin/docker compose -f /home/ubuntu/PREPIFYAI/docker-compose.yml up -d postgres
 ExecStart=/home/ubuntu/PREPIFYAI/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
 Restart=always
 RestartSec=5
@@ -222,6 +224,8 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 ```
+
+`WorkingDirectory=/home/ubuntu/PREPIFYAI` is required so `app.main:app` resolves correctly.
 
 Enable it:
 
