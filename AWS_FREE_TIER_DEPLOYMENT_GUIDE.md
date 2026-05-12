@@ -92,10 +92,10 @@ cd PREPIFYAI
 Create production env file from template:
 
 ```bash
-cp /home/ubuntu/PREPIFYAI/app/.env.production.example /home/ubuntu/PREPIFYAI/app/.env
+cp app/.env.production.example app/.env
 ```
 
-Edit `/home/ubuntu/PREPIFYAI/app/.env` and set secure real values:
+Edit `app/.env` and set secure real values:
 - `DATABASE_URL`
 - `SECRET_KEY`
 - `ADMIN_EMAIL`
@@ -137,14 +137,14 @@ cd /home/ubuntu/PREPIFYAI
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install -r /home/ubuntu/PREPIFYAI/app/requirements.txt
+pip install -r app/requirements.txt
 ```
 
 Run migrations:
 
 ```bash
 cd /home/ubuntu/PREPIFYAI/app
-alembic -c /home/ubuntu/PREPIFYAI/app/alembic.ini upgrade head
+alembic -c alembic.ini upgrade head
 ```
 
 Start API (production-style, no reload):
