@@ -151,7 +151,7 @@ Start API (production-style, no reload):
 
 ```bash
 cd /home/ubuntu/PREPIFYAI
-docker compose exec -T postgres pg_isready -U postgres -d PrepifyAI_Main
+timeout 60 bash -c 'until docker compose exec -T postgres pg_isready -U postgres -d PrepifyAI_Main; do sleep 2; done'
 uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
@@ -218,7 +218,7 @@ Group=ubuntu
 WorkingDirectory=/home/ubuntu/PREPIFYAI
 EnvironmentFile=/home/ubuntu/PREPIFYAI/app/.env
 ExecStartPre=/usr/bin/docker compose -f /home/ubuntu/PREPIFYAI/docker-compose.yml up -d postgres
-ExecStartPre=/bin/bash -c 'until /usr/bin/docker compose -f /home/ubuntu/PREPIFYAI/docker-compose.yml exec -T postgres pg_isready -U postgres -d PrepifyAI_Main; do sleep 2; done'
+ExecStartPre=/usr/bin/timeout 60 /bin/bash -c 'until /usr/bin/docker compose -f /home/ubuntu/PREPIFYAI/docker-compose.yml exec -T postgres pg_isready -U postgres -d PrepifyAI_Main; do sleep 2; done'
 ExecStart=/home/ubuntu/PREPIFYAI/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
 Restart=always
 RestartSec=5
