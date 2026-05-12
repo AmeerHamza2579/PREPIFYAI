@@ -125,7 +125,7 @@ docker compose up -d postgres
 Enable pgvector extension:
 
 ```bash
-docker exec prepifyai_postgres psql -U postgres -d PrepifyAI_Main -c "CREATE EXTENSION IF NOT EXISTS vector;"
+docker compose exec -T postgres psql -U postgres -d PrepifyAI_Main -c "CREATE EXTENSION IF NOT EXISTS vector;"
 ```
 
 ---
@@ -151,8 +151,10 @@ Start API (production-style, no reload):
 
 ```bash
 cd /home/ubuntu/PREPIFYAI
-uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 2
+uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
 ```
+
+For larger instance sizes, increase workers gradually (for example 2–4) after monitoring CPU and memory.
 
 ---
 
@@ -213,7 +215,7 @@ User=ubuntu
 Group=ubuntu
 WorkingDirectory=/home/ubuntu/PREPIFYAI
 EnvironmentFile=/home/ubuntu/PREPIFYAI/app/.env
-ExecStart=/home/ubuntu/PREPIFYAI/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 2
+ExecStart=/home/ubuntu/PREPIFYAI/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
 Restart=always
 RestartSec=5
 
