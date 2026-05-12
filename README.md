@@ -100,6 +100,12 @@ python -m pytest tests/ --cov=app --cov-report=html
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
 
+## Deployment
+
+- **Beginner's click-by-click manual** (start here if this is your first deployment): `BEGINNERS_DEPLOYMENT_MANUAL.md`
+- AWS Free Tier architecture overview and service guide: `AWS_FREE_TIER_DEPLOYMENT_GUIDE.md`
+- Production environment template: `app/.env.production.example`
+
 ## Key Endpoints
 
 ### Authentication
